@@ -5,12 +5,13 @@ import Navigation from "../Navigation/Navigation";
 
 interface Props {
   children: React.ReactNode;
+  searchResults: string[];
 }
 
-export default function Skeleton({ children }: Props) {
+export default function Skeleton({ children, searchResults }: Props) {
   return (
     <>
-      <Navigation autoComplete={["test"]} />
+      <Navigation autoComplete={searchResults} />
       {children}
       <Footer />
     </>

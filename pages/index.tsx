@@ -5,6 +5,7 @@ import Skeleton from "../components/Skeleton/Skeleton";
 
 import PostCard from "../components/PostCard/PostCard";
 import { getPosts } from "../lib/backend/api";
+import { useRef } from "react";
 
 interface Props {
   posts: any;
@@ -17,32 +18,40 @@ const Home: NextPage<Props> = ({ posts }) => {
   const searchResults = posts.map((post: any) => {
     return {
       value: post.title,
+      href: post.slug,
+      image: post.posts.naslovnaslika.sourceUrl,
+      date: post.date,
       group: post.tags.nodes.map((tag: any) => tag.name),
     };
   });
 
+  const ref = useRef<HTMLInputElement>();
+
   return (
-    <Skeleton>
+    <Skeleton searchResults={searchResults}>
       <div className=" w-full p-6 md:w-4/6 m-auto">
         <Text align="left" size="xl">
           Latest posts
         </Text>
 
         {/* Posts collection */}
-        <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-          {/* Map through posts */}
-          {posts.map((post: any) => (
-            <div key={`${randomID}-${post.id}`}>
-              <PostCard
-                title={post.title}
-                imgSrc={post.posts.naslovnaslika.sourceUrl}
-                description={post.posts.opis}
-                tag={post.tags.nodes.map((tag: any) => tag.name)}
-                href={post.slug}
-              />
-            </div>
-          ))}
-        </div>
+        {posts.length > 0 && (
+          <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            {/* Map through posts */}
+            {posts.map((post: any) => (
+              <div key={`${randomID}-${post.id}`}>
+                <PostCard
+                  title={post.title}
+                  imgSrc={post.posts.naslovnaslika.sourceUrl}
+                  description={post.posts.opis}
+                  tag={post.tags.nodes.map((tag: any) => tag.name)}
+                  href={post.slug}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {/* Pagination */}
         <Pagination
           total={10}
           style={{ marginTop: 26 }}

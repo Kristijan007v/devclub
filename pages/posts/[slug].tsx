@@ -28,7 +28,7 @@ export default function Post({ post }: Props) {
   }
 
   return (
-    <Skeleton>
+    <Skeleton searchResults={["test"]}>
       {router.isFallback ? (
         <p className="p-6 text-center">Loading post…</p>
       ) : (

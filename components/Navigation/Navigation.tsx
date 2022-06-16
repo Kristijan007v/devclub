@@ -1,6 +1,6 @@
-import { Autocomplete, Kbd, Text, Anchor } from "@mantine/core";
+import { Kbd, Text, Anchor } from "@mantine/core";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
-import { Hash } from "tabler-icons-react";
+import SearchData from "../Search/SearchData";
 
 interface Props {
   autoComplete: string[];
@@ -10,7 +10,10 @@ export default function Navigation({ autoComplete }: Props) {
   return (
     <nav className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-2 justify-between items-center p-4 w-full">
       <div className="flex items-center justify-between w-full">
-        <a className="font-extrabold text-3xl ">DEVCLUB</a>
+        {/* <a className="font-extrabold text-3xl ">DEVCLUB</a> */}
+        <Anchor href="/" className="font-extrabold text-3xl text-primary-blue">
+          DevClub
+        </Anchor>
         <span className="block md:hidden">
           <ThemeSwitch />
         </span>
@@ -23,15 +26,7 @@ export default function Navigation({ autoComplete }: Props) {
           </div>
         </div>
         <span className="grow md:grow-0">
-          <Autocomplete
-            transition="pop-top-left"
-            transitionDuration={80}
-            transitionTimingFunction="ease"
-            placeholder="Search posts ..."
-            icon={<Hash />}
-            limit={4}
-            data={autoComplete}
-          />
+          <SearchData searchData={autoComplete} />
         </span>
       </div>
     </nav>

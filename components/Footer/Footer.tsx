@@ -133,7 +133,7 @@ export default function Footer() {
           {/* <Text size="md" align="center">
           NETWORK INFO
         </Text> */}
-          <Group position="apart">
+          <Group position="apart" noWrap>
             <Text size="sm" color={networkStatus.online ? "teal" : "red"}>
               {networkStatus.online ? "Online" : "Offline"}
             </Text>
