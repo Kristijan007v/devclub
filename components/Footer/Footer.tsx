@@ -9,10 +9,18 @@ import {
   Anchor,
   Notification,
   TextInput,
+  Box,
 } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { useForm } from "@mantine/form";
-import { Check, X } from "tabler-icons-react";
+import {
+  Check,
+  X,
+  ArrowBarToDown,
+  CellSignal5,
+  Wifi0,
+} from "tabler-icons-react";
+import { useNetwork } from "@mantine/hooks";
 
 export default function Footer() {
   const [submit, setSubmit] = React.useState(false);
@@ -67,6 +75,9 @@ export default function Footer() {
     setSubmit(false);
   };
 
+  //Get network status
+  const networkStatus = useNetwork();
+
   return (
     <footer className="p-6">
       <div className="w-full mb-6 md:w-4/6 lg:w-3/6 xl:w-2/6 m-auto">
@@ -99,8 +110,48 @@ export default function Footer() {
             </InputWrapper>
           </form>
         </Card>
+        <Box
+          style={{ marginTop: "1rem" }}
+          sx={(theme) => ({
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[0],
+            textAlign: "center",
+            padding: theme.spacing.sm,
+            borderRadius: theme.radius.md,
+            cursor: "pointer",
+
+            "&:hover": {
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[5]
+                  : theme.colors.gray[1],
+            },
+          })}
+        >
+          {/* <Text size="md" align="center">
+          NETWORK INFO
+        </Text> */}
+          <Group position="apart">
+            <Text size="sm" color={networkStatus.online ? "teal" : "red"}>
+              {networkStatus.online ? "Online" : "Offline"}
+            </Text>
+            <Text size="sm" align="center">
+              <Group>
+                <ArrowBarToDown /> <span>{networkStatus.downlink} Mbps</span>
+              </Group>
+            </Text>
+            <Text size="sm" align="center">
+              <Group>
+                <CellSignal5 />
+                <span className="uppercase">{networkStatus.effectiveType}</span>
+              </Group>
+            </Text>
+          </Group>
+        </Box>
       </div>
-      <Text size="sm" align="center">
+      <Text size="sm" align="center" style={{ marginTop: 14 }}>
         Powered by{" "}
         <Anchor href="https://mantine.dev/" target="_blank">
           Mantine DEV

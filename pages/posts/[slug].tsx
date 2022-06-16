@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { Container, Group, Text } from "@mantine/core";
+import ErrorPage from "next/error";
 import Image from "next/image";
 import { CalendarEvent } from "tabler-icons-react";
 import SocialShare from "../../components/SocialShare/SocialShare";
@@ -22,53 +23,61 @@ export default function Post({ post }: Props) {
     return { __html: `${content}` };
   }
 
+  if (!router.isFallback && !post?.slug) {
+    return <ErrorPage statusCode={404} />;
+  }
+
   return (
-    <Skeleton searchProps={["Test"]}>
-      <Container style={{ marginTop: 24 }}>
-        <div className="relative h-64 w-full rounded-xl">
-          <Image
-            src={`${post.posts.naslovnaslika.sourceUrl}`}
-            layout="fill"
-            objectFit="cover"
-            placeholder="blur"
-            blurDataURL={`../my-picture.jpg`}
-            className="rounded-xl"
-            alt={post.posts.naslovnaslika.altText}
-          />
-          <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/30 rounded-xl">
-            <div className="absolute bottom-0 left-0 p-4">
-              <h1 className="text-white text-xl">{post?.title}</h1>
-            </div>
-            <div className="p-4">
-              <Group position="apart">
-                <div className="flex items-center space-x-2">
-                  <CalendarEvent size={16} color={"white"} />
+    <Skeleton>
+      {router.isFallback ? (
+        <p className="p-6 text-center">Loading post…</p>
+      ) : (
+        <Container style={{ marginTop: 24 }}>
+          <div className="relative h-64 w-full rounded-xl">
+            <Image
+              src={`${post.posts.naslovnaslika.sourceUrl}`}
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={`../my-picture.jpg`}
+              className="rounded-xl"
+              alt={post.posts.naslovnaslika.altText}
+            />
+            <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/30 rounded-xl">
+              <div className="absolute bottom-0 left-0 p-4">
+                <h1 className="text-white text-xl">{post?.title}</h1>
+              </div>
+              <div className="p-4">
+                <Group position="apart">
+                  <div className="flex items-center space-x-2">
+                    <CalendarEvent size={16} color={"white"} />
+                    <Text size="sm" weight={"normal"} color={"white"}>
+                      {formatDate(post.date)}
+                    </Text>
+                  </div>
                   <Text size="sm" weight={"normal"} color={"white"}>
-                    {formatDate(post.date)}
+                    Author: {post.author.node.firstName}
                   </Text>
-                </div>
-                <Text size="sm" weight={"normal"} color={"white"}>
-                  Author: {post.author.node.firstName}
-                </Text>
-              </Group>
+                </Group>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Content */}
-        <Text
-          style={{ marginTop: 20 }}
-          dangerouslySetInnerHTML={createMarkup(`${post.posts.content}`)}
-        />
-
-        <div className="mt-14">
-          <SocialShare
-            url={`https://${MAIN_DOMAIN}/posts/${slug}`}
-            text="Share this post"
+          {/* Content */}
+          <Text
+            style={{ marginTop: 20 }}
+            dangerouslySetInnerHTML={createMarkup(`${post.posts.content}`)}
           />
-        </div>
-        {/* <Image src="../my_picture.jpg" height={160} alt="Norway" /> */}
-      </Container>
+
+          <div className="mt-14 mr-2 ml-2">
+            <SocialShare
+              url={`https://${MAIN_DOMAIN}/posts/${slug}`}
+              text="Share this post"
+            />
+          </div>
+          {/* <Image src="../my_picture.jpg" height={160} alt="Norway" /> */}
+        </Container>
+      )}
     </Skeleton>
   );
 }

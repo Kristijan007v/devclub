@@ -22,7 +22,7 @@ const Home: NextPage<Props> = ({ posts }) => {
   });
 
   return (
-    <Skeleton searchProps={searchResults}>
+    <Skeleton>
       <div className=" w-full p-6 md:w-4/6 m-auto">
         <Text align="left" size="xl">
           Latest posts
@@ -56,13 +56,12 @@ const Home: NextPage<Props> = ({ posts }) => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { posts } = (await getPosts(3)) || [];
 
   return {
     props: {
       posts,
     },
-    revalidate: 60,
   };
 }

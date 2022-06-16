@@ -7,6 +7,14 @@ import {
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { NotificationsProvider } from "@mantine/notifications";
+import { createContext } from "react";
+
+interface AppContextInterface {
+  value: string;
+  group: string;
+}
+
+const AppCtx = createContext<AppContextInterface | null>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
