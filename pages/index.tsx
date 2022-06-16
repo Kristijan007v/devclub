@@ -36,7 +36,7 @@ const Home: NextPage<Props> = ({ posts }) => {
 
         {/* Posts collection */}
         {posts.length > 0 && (
-          <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {/* Map through posts */}
             {posts.map((post: any) => (
               <div key={`${randomID}-${post.id}`}>
@@ -65,12 +65,13 @@ const Home: NextPage<Props> = ({ posts }) => {
 
 export default Home;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { posts } = (await getPosts(3)) || [];
 
   return {
     props: {
       posts,
     },
+    revalidate: 10, // In seconds
   };
 }
