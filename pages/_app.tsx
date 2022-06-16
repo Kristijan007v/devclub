@@ -7,7 +7,6 @@ import {
 } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { NotificationsProvider } from "@mantine/notifications";
-import Skeleton from "../components/Skeleton/Skeleton";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -31,9 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         withNormalizeCSS
       >
         <NotificationsProvider position="top-right" zIndex={2077}>
-          <Skeleton>
-            <Component {...pageProps} />
-          </Skeleton>
+          <Component {...pageProps} />
         </NotificationsProvider>
       </MantineProvider>
     </ColorSchemeProvider>

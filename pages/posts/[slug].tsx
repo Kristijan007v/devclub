@@ -16,7 +16,7 @@ export default function Post({ post }: Props) {
   const MAIN_DOMAIN = process.env.NEXT_PUBLIC_MAIN_DOMAIN;
   return (
     <div>
-      <Container style={{ marginTop: 30 }}>
+      <Container style={{ marginTop: 24 }}>
         <div className="relative h-64 w-full rounded-xl">
           <Image
             src={`/my_picture.jpg`}

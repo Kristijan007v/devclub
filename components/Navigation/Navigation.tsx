@@ -1,8 +1,12 @@
 import { Autocomplete, Kbd, Text, Anchor } from "@mantine/core";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
-import Link from "next/link";
+import { Hash } from "tabler-icons-react";
 
-export default function Navigation() {
+interface Props {
+  autoComplete: string[];
+}
+
+export default function Navigation({ autoComplete }: Props) {
   return (
     <nav className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-2 justify-between items-center p-4 w-full">
       <div className="flex items-center justify-between w-full">
@@ -20,8 +24,12 @@ export default function Navigation() {
         </div>
         <span className="grow md:grow-0">
           <Autocomplete
+            transition="pop-top-left"
+            transitionDuration={80}
+            transitionTimingFunction="ease"
             placeholder="Search posts ..."
-            data={["React", "Angular", "Svelte", "Vue"]}
+            icon={<Hash />}
+            data={autoComplete}
           />
         </span>
       </div>
