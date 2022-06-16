@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import { Autocomplete } from "@mantine/core";
+import { Autocomplete, Pagination } from "@mantine/core";
 import {
   Kbd,
   Card,
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
             >
               <Text weight={500}>Norway Fjord Adventures</Text>
               <Badge color="pink" variant="light">
-                On Sale
+                Python
               </Badge>
             </Group>
 
@@ -118,19 +118,12 @@ const Home: NextPage = () => {
             </Button>
           </Card>
         </div>
-        <Button
-          variant="outline"
-          fullWidth
-          style={{ marginTop: 14 }}
-          onClick={() =>
-            showNotification({
-              title: "Default notification",
-              message: "Hey there, your code is awesome! 🤥",
-            })
-          }
-        >
-          Load more
-        </Button>
+        <Pagination
+          total={10}
+          style={{ marginTop: 26 }}
+          align="center"
+          position={"center"}
+        />
       </div>
     </>
   );

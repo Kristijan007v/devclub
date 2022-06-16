@@ -68,7 +68,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="mt-20 p-5">
+    <footer className="p-6">
       <div className="w-full mb-6 md:w-4/6 lg:w-3/6 xl:w-2/6 m-auto">
         <Card shadow="sm" p="lg">
           <form onSubmit={form.onSubmit(() => subscribe())}>
