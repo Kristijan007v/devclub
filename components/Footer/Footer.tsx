@@ -49,7 +49,7 @@ export default function Footer() {
       // 4. If there was an error, update the message in state.
       showNotification({
         title: "Error",
-        message: "Something went wrong! 🤥",
+        message: "Something went wrong! 😳",
         color: "red",
         icon: <X />,
       });
@@ -69,15 +69,16 @@ export default function Footer() {
 
   return (
     <footer className="mt-20 p-5">
-      <div className="w-full mb-6 md:w-5/6 lg:w-4/6 xl:w-3/6 2xl:w-2/6 m-auto">
+      <div className="w-full mb-6 md:w-4/6 lg:w-3/6 xl:w-2/6 m-auto">
         <Card shadow="sm" p="lg">
-          <form onSubmit={form.onSubmit((values) => subscribe())}>
+          <form onSubmit={form.onSubmit(() => subscribe())}>
             <InputWrapper
               id="input-demo"
+              size="md"
               label="Subscribe to the newsletter"
               description="Get emails from me about web development, tech, and early access to new articles."
             >
-              <Group position="apart" grow>
+              <Group position="apart" grow style={{ marginTop: 12 }}>
                 <TextInput
                   required
                   placeholder="your@email.com"
