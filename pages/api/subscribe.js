@@ -1,5 +1,4 @@
 import mailchimp from "@mailchimp/mailchimp_marketing";
-import { subscribe } from "graphql";
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,

@@ -12,6 +12,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import Navigation from "../components/Navigation/Navigation";
+import { showNotification } from "@mantine/notifications";
 
 const Home: NextPage = () => {
   const [value, onChange] = useState("rgba(47, 119, 150, 0.7)");
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
     theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
   return (
     <>
-      <div className=" w-full p-6 md:w-4/6 m-auto ">
+      <div className=" w-full p-6 md:w-4/6 m-auto">
         <Text align="left" size="xl">
           Latest posts
         </Text>
@@ -117,6 +118,19 @@ const Home: NextPage = () => {
             </Button>
           </Card>
         </div>
+        <Button
+          variant="outline"
+          fullWidth
+          style={{ marginTop: 14 }}
+          onClick={() =>
+            showNotification({
+              title: "Default notification",
+              message: "Hey there, your code is awesome! 🤥",
+            })
+          }
+        >
+          Load more
+        </Button>
       </div>
     </>
   );
