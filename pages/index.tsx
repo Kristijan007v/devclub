@@ -15,7 +15,10 @@ const Home: NextPage<Props> = ({ posts }) => {
 
   //Return array of posts like this ["post1", "post2", "post3"]
   const searchResults = posts.map((post: any) => {
-    return post.title;
+    return {
+      value: post.title,
+      group: post.tags.nodes.map((tag: any) => tag.name),
+    };
   });
 
   return (

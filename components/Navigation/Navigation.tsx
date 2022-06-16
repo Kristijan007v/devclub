@@ -29,6 +29,7 @@ export default function Navigation({ autoComplete }: Props) {
             transitionTimingFunction="ease"
             placeholder="Search posts ..."
             icon={<Hash />}
+            limit={4}
             data={autoComplete}
           />
         </span>

@@ -4,6 +4,9 @@ import { Container, Group, Text } from "@mantine/core";
 import Image from "next/image";
 import { CalendarEvent } from "tabler-icons-react";
 import SocialShare from "../../components/SocialShare/SocialShare";
+import { getAllPostsWithSlug, getPostBySlug } from "../../lib/backend/api";
+import Skeleton from "../../components/Skeleton/Skeleton";
+import formatDate from "../../lib/backend/utilities/formatDate";
 
 interface Props {
   post: any;
@@ -14,33 +17,38 @@ export default function Post({ post }: Props) {
   const { slug } = router.query;
 
   const MAIN_DOMAIN = process.env.NEXT_PUBLIC_MAIN_DOMAIN;
+
+  function createMarkup(content: any) {
+    return { __html: `${content}` };
+  }
+
   return (
-    <div>
+    <Skeleton searchProps={["Test"]}>
       <Container style={{ marginTop: 24 }}>
         <div className="relative h-64 w-full rounded-xl">
           <Image
-            src={`/my_picture.jpg`}
+            src={`${post.posts.naslovnaslika.sourceUrl}`}
             layout="fill"
             objectFit="cover"
             placeholder="blur"
             blurDataURL={`../my-picture.jpg`}
             className="rounded-xl"
-            alt={"test"}
+            alt={post.posts.naslovnaslika.altText}
           />
           <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/30 rounded-xl">
             <div className="absolute bottom-0 left-0 p-4">
-              <h1 className="text-white text-xl">{slug}</h1>
+              <h1 className="text-white text-xl">{post?.title}</h1>
             </div>
             <div className="p-4">
               <Group position="apart">
                 <div className="flex items-center space-x-2">
                   <CalendarEvent size={16} color={"white"} />
                   <Text size="sm" weight={"normal"} color={"white"}>
-                    11.7.2022
+                    {formatDate(post.date)}
                   </Text>
                 </div>
                 <Text size="sm" weight={"normal"} color={"white"}>
-                  Author: Kristijan
+                  Author: {post.author.node.firstName}
                 </Text>
               </Group>
             </div>
@@ -48,15 +56,10 @@ export default function Post({ post }: Props) {
         </div>
 
         {/* Content */}
-        <Text style={{ marginTop: 20 }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Text>
+        <Text
+          style={{ marginTop: 20 }}
+          dangerouslySetInnerHTML={createMarkup(`${post.posts.content}`)}
+        />
 
         <div className="mt-14">
           <SocialShare
@@ -66,6 +69,28 @@ export default function Post({ post }: Props) {
         </div>
         {/* <Image src="../my_picture.jpg" height={160} alt="Norway" /> */}
       </Container>
-    </div>
+    </Skeleton>
   );
+}
+
+export async function getStaticPaths() {
+  const paths = await getAllPostsWithSlug();
+  return {
+    paths: paths.posts.map((path: any) => ({
+      params: {
+        slug: path.slug,
+      },
+    })),
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }: any) {
+  const { data } = (await getPostBySlug(params.slug)) || {};
+
+  return {
+    props: {
+      post: data.data.post,
+    },
+  };
 }
