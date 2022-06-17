@@ -15,7 +15,7 @@ export default function Navigation({ autoComplete }: Props) {
           sx={(theme) => ({
             color:
               theme.colorScheme === "dark"
-                ? theme.colors.gray[6]
+                ? theme.colors.gray[5]
                 : theme.colors.dark[6],
           })}
           href="/"
