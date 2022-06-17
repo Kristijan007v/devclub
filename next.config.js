@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const withPWA = require("next-pwa");
 
 const MEDIA_DOMAIN = process.env.MEDIA_DOMAIN;
 const AVATAR_DOMAIN = process.env.AVATAR_DOMAIN;
@@ -10,4 +11,11 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPWA({
+  nextConfig,
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
+});
