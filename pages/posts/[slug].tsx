@@ -45,10 +45,9 @@ export default function Post({ post }: Props) {
               src={`${post.posts.naslovnaslika.sourceUrl}`}
               layout="fill"
               objectFit="cover"
-              placeholder="blur"
-              blurDataURL={`${post.posts.naslovnaslika.sourceUrl}`}
               className="rounded-xl"
-              alt={post.posts.naslovnaslika.altText}
+              alt={post.title}
+              priority
             />
             <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/30 rounded-xl">
               <div className="absolute bottom-0 left-0 p-4">
