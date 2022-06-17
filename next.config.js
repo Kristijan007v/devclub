@@ -12,10 +12,13 @@ const nextConfig = {
 };
 
 module.exports = withPWA({
-  nextConfig,
   pwa: {
     dest: "public",
     register: true,
     skipWaiting: true,
+  },
+  reactStrictMode: true,
+  images: {
+    domains: ["localhost", MEDIA_DOMAIN, AVATAR_DOMAIN],
   },
 });
