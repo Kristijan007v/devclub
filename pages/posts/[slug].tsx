@@ -28,7 +28,14 @@ export default function Post({ post }: Props) {
   }
 
   return (
-    <Skeleton searchResults={["test"]}>
+    <Skeleton
+      title={`DevClub - ${post.title}`}
+      searchResults={["test"]}
+      metaDescription={post.description}
+      metaTitle={post.title}
+      metaShareDescription={post.description}
+      metaImageURL={post.posts.naslovnaslika.sourceUrl}
+    >
       {router.isFallback ? (
         <p className="p-6 text-center">Loading post…</p>
       ) : (
@@ -39,7 +46,7 @@ export default function Post({ post }: Props) {
               layout="fill"
               objectFit="cover"
               placeholder="blur"
-              blurDataURL={`../my-picture.jpg`}
+              blurDataURL={`${post.posts.naslovnaslika.sourceUrl}`}
               className="rounded-xl"
               alt={post.posts.naslovnaslika.altText}
             />

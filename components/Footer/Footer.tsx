@@ -145,7 +145,7 @@ export default function Footer() {
             <Text size="sm" align="center">
               <Group>
                 <CellSignal5 />
-                <span className="uppercase">{networkStatus.effectiveType}</span>
+                <p className="uppercase">{networkStatus.effectiveType}</p>
               </Group>
             </Text>
           </Group>

@@ -14,9 +14,9 @@ export default function Navigation({ autoComplete }: Props) {
         <Anchor href="/" className="font-extrabold text-3xl text-primary-blue">
           DevClub
         </Anchor>
-        <span className="block md:hidden">
+        <div className="block md:hidden">
           <ThemeSwitch />
-        </span>
+        </div>
       </div>
       <div className="flex space-x-0 md:space-x-2 items-center w-full">
         <div className="hidden md:flex items-center space-x-2 w-full">
@@ -25,9 +25,9 @@ export default function Navigation({ autoComplete }: Props) {
             <Kbd>CTRL/⌘</Kbd> + <Kbd>J</Kbd>
           </div>
         </div>
-        <span className="grow md:grow-0">
+        <div className="grow md:grow-0">
           <SearchData searchData={autoComplete} />
-        </span>
+        </div>
       </div>
     </nav>
   );

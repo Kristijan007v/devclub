@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ posts }) => {
   const ref = useRef<HTMLInputElement>();
 
   return (
-    <Skeleton searchResults={searchResults}>
+    <Skeleton title={`DevClub - Homepage`} searchResults={searchResults}>
       <div className=" w-full p-6 md:w-4/6 m-auto">
         <Text align="left" size="xl">
           Latest posts
@@ -39,7 +39,7 @@ const Home: NextPage<Props> = ({ posts }) => {
           <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {/* Map through posts */}
             {posts.map((post: any) => (
-              <div key={`${randomID}-${post.id}`}>
+              <span key={post.id}>
                 <PostCard
                   title={post.title}
                   imgSrc={post.posts.naslovnaslika.sourceUrl}
@@ -47,7 +47,7 @@ const Home: NextPage<Props> = ({ posts }) => {
                   tag={post.tags.nodes.map((tag: any) => tag.name)}
                   href={post.slug}
                 />
-              </div>
+              </span>
             ))}
           </div>
         )}
