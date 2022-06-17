@@ -11,8 +11,17 @@ export default function Navigation({ autoComplete }: Props) {
     <nav className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-2 justify-between items-center p-4 w-full">
       <div className="flex items-center justify-between w-full">
         {/* <a className="font-extrabold text-3xl ">DEVCLUB</a> */}
-        <Anchor href="/" className="font-extrabold text-3xl text-primary-blue">
-          DevClub
+        <Anchor
+          sx={(theme) => ({
+            color:
+              theme.colorScheme === "dark"
+                ? theme.colors.gray[6]
+                : theme.colors.dark[6],
+          })}
+          href="/"
+          className="font-extrabold text-3xl "
+        >
+          DEVCLUB
         </Anchor>
         <div className="block md:hidden">
           <ThemeSwitch />
