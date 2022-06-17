@@ -81,7 +81,6 @@ export default function Post({ post }: Props) {
               text="Share this post"
             />
           </div>
-          {/* <Image src="../my_picture.jpg" height={160} alt="Norway" /> */}
         </Container>
       )}
     </Skeleton>
