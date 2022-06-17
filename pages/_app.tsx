@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         withNormalizeCSS
       >
         <NotificationsProvider position="top-right" zIndex={2077}>
-          <Component {...pageProps} suppressHydrationWarning />
+          <Component {...pageProps} />
         </NotificationsProvider>
       </MantineProvider>
     </ColorSchemeProvider>

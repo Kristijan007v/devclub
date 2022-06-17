@@ -23,7 +23,7 @@ export default function Skeleton({
   metaImageURL,
 }: Props) {
   return (
-    <>
+    <div suppressHydrationWarning>
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -37,6 +37,6 @@ export default function Skeleton({
       <Navigation autoComplete={searchResults} />
       {children}
       <Footer />
-    </>
+    </div>
   );
 }

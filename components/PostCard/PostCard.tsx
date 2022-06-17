@@ -4,10 +4,10 @@ import {
   Button,
   Card,
   Group,
-  Image,
   Text,
   useMantineTheme,
 } from "@mantine/core";
+import Image from "next/image";
 import React from "react";
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
   description: string;
   tag: string;
   href: string;
+  alt?: string;
 }
 
 export default function PostCard({
@@ -24,6 +25,7 @@ export default function PostCard({
   description,
   tag,
   href,
+  alt,
 }: Props) {
   const theme = useMantineTheme();
 
@@ -33,7 +35,17 @@ export default function PostCard({
   return (
     <Card shadow="sm" p="lg">
       <Card.Section>
-        <Image src={`${imgSrc}`} height={160} alt="Norway" />
+        <div className="relative h-48 w-full rounded-xl">
+          <Image
+            src={`${imgSrc}`}
+            layout="fill"
+            objectFit="cover"
+            placeholder="blur"
+            blurDataURL={`${imgSrc}`}
+            className="rounded-tr-xl rounded-tl-xl"
+            alt={alt}
+          />
+        </div>
       </Card.Section>
 
       <Group
