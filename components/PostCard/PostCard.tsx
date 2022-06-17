@@ -16,7 +16,7 @@ interface Props {
   description: string;
   tag: string;
   href: string;
-  alt?: string;
+  alt: string;
 }
 
 export default function PostCard({

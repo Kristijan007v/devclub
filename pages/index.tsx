@@ -52,6 +52,7 @@ const Home: NextPage<Props> = ({ posts }) => {
                   description={post.posts.opis}
                   tag={post.tags.nodes.map((tag: any) => tag.name)}
                   href={post.slug}
+                  alt={post.title}
                 />
               </span>
             ))}
