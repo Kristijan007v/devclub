@@ -29,12 +29,12 @@ export default function Post({ post }: Props) {
 
   return (
     <Skeleton
-      title={`DevClub - ${post.title}`}
+      title={`DevClub - ${post?.title}`}
       searchResults={["test"]}
-      metaDescription={post.description}
-      metaTitle={post.title}
-      metaShareDescription={post.description}
-      metaImageURL={post.posts.naslovnaslika.sourceUrl}
+      metaDescription={`${post?.posts.opis}`}
+      metaTitle={`${post?.title} - by ${post?.author.node.firstName}`}
+      metaShareDescription={`Read this article on ${MAIN_DOMAIN}`}
+      metaImageURL={`${post?.posts.naslovnaslika.sourceUrl}`}
     >
       {router.isFallback ? (
         <p className="p-6 text-center">Loading post…</p>
