@@ -1,19 +1,17 @@
-import { Pagination, Text } from "@mantine/core";
-import { useId } from "@mantine/hooks";
+import { Text } from "@mantine/core";
+
 import type { NextPage } from "next";
 import Skeleton from "../components/Skeleton/Skeleton";
 
+import { useRef } from "react";
 import PostCard from "../components/PostCard/PostCard";
 import { getPosts } from "../lib/backend/api";
-import { useRef } from "react";
 
 interface Props {
   posts: any;
 }
 
 const Home: NextPage<Props> = ({ posts }) => {
-  const randomID = useId();
-
   //Return array of posts like this ["post1", "post2", "post3"]
   const searchResults = posts.map((post: any) => {
     return {
@@ -60,12 +58,6 @@ const Home: NextPage<Props> = ({ posts }) => {
           </div>
         )}
         {/* Pagination */}
-        {/* <Pagination
-          total={10}
-          style={{ marginTop: 26 }}
-          align="center"
-          position={"center"}
-        /> */}
       </div>
     </Skeleton>
   );

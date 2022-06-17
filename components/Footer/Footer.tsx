@@ -118,16 +118,8 @@ export default function Footer() {
                 ? theme.colors.dark[6]
                 : theme.colors.gray[0],
             textAlign: "center",
-            padding: theme.spacing.sm,
+            padding: theme.spacing.xs,
             borderRadius: theme.radius.md,
-            cursor: "pointer",
-
-            "&:hover": {
-              backgroundColor:
-                theme.colorScheme === "dark"
-                  ? theme.colors.dark[5]
-                  : theme.colors.gray[1],
-            },
           })}
         >
           {/* <Text size="md" align="center">
