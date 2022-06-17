@@ -11,6 +11,7 @@ import Image from "next/image";
 import React from "react";
 
 interface Props {
+  index: number;
   title: string;
   imgSrc: string;
   description: string;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export default function PostCard({
+  index,
   title,
   imgSrc,
   description,
@@ -40,10 +42,12 @@ export default function PostCard({
             src={`${imgSrc}`}
             layout="fill"
             objectFit="cover"
-            placeholder="blur"
-            blurDataURL={`${imgSrc}`}
             className="rounded-tr-xl rounded-tl-xl"
             alt={alt}
+            //If index is 0 set priority to true else false and use blurDataURL and placeholder properties
+            priority={index === 0 ? true : false}
+            blurDataURL={index === 0 ? "" : `${imgSrc}`}
+            placeholder={index === 0 ? "empty" : "blur"}
           />
         </div>
       </Card.Section>

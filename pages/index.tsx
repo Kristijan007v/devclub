@@ -44,9 +44,10 @@ const Home: NextPage<Props> = ({ posts }) => {
         {posts.length > 0 && (
           <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {/* Map through posts */}
-            {posts.map((post: any) => (
+            {posts.map((post: any, index: number) => (
               <span key={post.id}>
                 <PostCard
+                  index={index}
                   title={post.title}
                   imgSrc={post.posts.naslovnaslika.sourceUrl}
                   description={post.posts.opis}
