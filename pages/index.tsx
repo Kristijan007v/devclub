@@ -28,7 +28,13 @@ const Home: NextPage<Props> = ({ posts }) => {
   const ref = useRef<HTMLInputElement>();
 
   return (
-    <Skeleton title={`DevClub - Homepage`} searchResults={searchResults}>
+    <Skeleton
+      title={`DevClub - Homepage`}
+      metaDescription="A blog about web development, programming, tips and tricks, and a whole lot more. Follow me on my Web Development journey, buckle up."
+      metaTitle={`DevClub - Homepage`}
+      metaShareDescription={`Check out this awesome blog on ${process.env.NEXT_PUBLIC_MAIN_DOMAIN}`}
+      searchResults={searchResults}
+    >
       <div className=" w-full p-6 md:w-4/6 m-auto">
         <Text align="left" size="xl">
           Latest posts
@@ -52,12 +58,12 @@ const Home: NextPage<Props> = ({ posts }) => {
           </div>
         )}
         {/* Pagination */}
-        <Pagination
+        {/* <Pagination
           total={10}
           style={{ marginTop: 26 }}
           align="center"
           position={"center"}
-        />
+        /> */}
       </div>
     </Skeleton>
   );

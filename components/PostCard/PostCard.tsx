@@ -61,7 +61,7 @@ export default function PostCard({
         fullWidth
         style={{ marginTop: 14 }}
       >
-        Read more
+        Read article
       </Button>
     </Card>
   );
