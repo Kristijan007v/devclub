@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Container, Group, Text } from "@mantine/core";
+import { Container, Divider, Group, Text } from "@mantine/core";
 import ErrorPage from "next/error";
 import Image from "next/image";
 import { CalendarEvent } from "tabler-icons-react";
@@ -76,6 +76,7 @@ export default function Post({ post }: Props) {
           />
 
           <div className="mt-14 mr-2 ml-2">
+            <Divider my="sm" variant="dashed" />
             <SocialShare
               url={`https://${MAIN_DOMAIN}/posts/${slug}`}
               text="Share this post"

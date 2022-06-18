@@ -31,7 +31,6 @@ export default function SocialShare({
     <Box
       sx={(theme) => ({
         textAlign: "center",
-        padding: theme.spacing.xs,
       })}
     >
       <Group position="apart">
