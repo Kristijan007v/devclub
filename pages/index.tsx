@@ -3,7 +3,6 @@ import { Text } from "@mantine/core";
 import type { NextPage } from "next";
 import Skeleton from "../components/Skeleton/Skeleton";
 
-import { useRef } from "react";
 import PostCard from "../components/PostCard/PostCard";
 import { getPosts } from "../lib/backend/api";
 
@@ -22,8 +21,6 @@ const Home: NextPage<Props> = ({ posts }) => {
       group: post.tags.nodes.map((tag: any) => tag.name),
     };
   });
-
-  const ref = useRef<HTMLInputElement>();
 
   return (
     <Skeleton
