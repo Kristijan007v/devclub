@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -26,6 +27,7 @@
     "moment": "^2.29.3",
     "next": "12.1.5",
     "next-pwa": "^5.5.4",
+    "next-sitemap": "^3.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-share": "^4.4.0",

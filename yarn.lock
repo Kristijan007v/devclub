@@ -931,6 +931,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@corex/deepmerge@^4.0.14":
+  version "4.0.24"
+  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-4.0.24.tgz#d167c0249b2136d6da958bacc0c6788c30405457"
+  integrity sha512-rgiQIkwFcphlE1TCY9Mds3DTj1voBfywnLDTJkHSaRX/sfCh0hmboJX1mOKNXSyDtq5m48ELj23Ogm+Vx2ACHg==
+
 "@emotion/cache@11.7.1":
   version "11.7.1"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-11.7.1.tgz#08d080e396a42e0037848214e8aa7bf879065539"
@@ -3503,6 +3508,14 @@ next-pwa@^5.5.4:
     terser-webpack-plugin "^5.3.3"
     workbox-webpack-plugin "^6.5.3"
     workbox-window "^6.5.3"
+
+next-sitemap@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-3.0.5.tgz#6c031641455356db7fac9d34b42809dd4c43d1b2"
+  integrity sha512-YdiW5wYNruyZCvhGGOMAdTylCQuxQkZKbSFV9Fjuf/U7aAt8lJwc3HG/WvR0n3Q1Y8c1ZiW/24UDZLQPfoKsYg==
+  dependencies:
+    "@corex/deepmerge" "^4.0.14"
+    minimist "^1.2.6"
 
 next@12.1.5:
   version "12.1.5"
