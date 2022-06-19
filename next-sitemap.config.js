@@ -5,5 +5,3 @@ const config = {
   sitemapSize: 7000,
   // ...other options
 };
-
-export default config;
