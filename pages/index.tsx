@@ -1,4 +1,5 @@
 import { Text } from "@mantine/core";
+import Head from "next/head";
 
 import type { NextPage } from "next";
 import Skeleton from "../components/Skeleton/Skeleton";
@@ -30,6 +31,12 @@ const Home: NextPage<Props> = ({ posts }) => {
       metaShareDescription={`Check out this awesome blog on ${process.env.NEXT_PUBLIC_MAIN_DOMAIN}`}
       searchResults={searchResults}
     >
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="bE84OZf2Fa2dI7FsPmIrulKdqrT2pbeRS4ISf8pBC8I"
+        />
+      </Head>
       <div className=" w-full p-6 md:w-4/6 m-auto">
         <Text align="left" size="xl">
           Latest posts
