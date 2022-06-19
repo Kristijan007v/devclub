@@ -111,6 +111,7 @@ export default function Footer() {
           </form>
         </Card>
         <Box
+          className="pr-4 pl-4"
           style={{ marginTop: "1rem" }}
           sx={(theme) => ({
             backgroundColor:
@@ -118,7 +119,6 @@ export default function Footer() {
                 ? theme.colors.dark[6]
                 : theme.colors.gray[0],
             textAlign: "center",
-            padding: theme.spacing.xs,
             borderRadius: theme.radius.md,
           })}
         >
